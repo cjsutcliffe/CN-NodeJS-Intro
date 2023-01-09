@@ -1,45 +1,41 @@
+const yargs = require('yargs');
+
 const Movie = require('./utils/index')
 
-function app (argument) {
-    switch (argument[2]) {
-        case "add":
-            // code to add a movie to an array goes here
-            const movieName = argument[3];
-            const actorName = argument[4];
-            // const movie = [movieName, actorName];
-            // console.log (movie);
-            const newMovie = new Movie(movieName,actorName);
-            newMovie.add();
-            break;
-        case "addmulti":
-            // code for adding four movies
-            const movie1Title = argument[3];
-            const movie1Actor = argument[4];
-            const movie1Director = argument[5];
-            const movie2Title = argument[6];
-            const movie2Actor = argument[7];
-            const movie2Director = argument[8];
-            const movie3Title = argument[9];
-            const movie3Actor = argument[10];
-            const movie3Director = argument[11];
-            const movie4Title = argument[12];
-            const movie4Actor = argument[13];
-            const movie4Director = argument[14];
+function app (input) {
+    if (input.add) {
+       
+            // code to add a movie to an object goes here
+            const movieName = input.title;
+            const actorName = input.actor;
+            const directorName = input.director;
+            const movie = [movieName, actorName, directorName];
+            console.log (movie);
+            
+    } else if (input.addmulti) {
+            // code for adding multiple movies
 
+            const movieName1 = input.title1;
+            const actorName1 = input.actor1;
+            const directorName1 = input.director1;
+            const movie1 = [movieName1, actorName1, directorName1];
+            console.log (movie1);
 
-            const movie1 = new Movie(movie1Title,movie1Actor,movie1Director);
-            movie1.add();
-            const movie2 = new Movie(movie2Title,movie2Actor,movie2Director);
-            movie2.add();
-            const movie3 = new Movie(movie3Title,movie3Actor,movie3Director);
-            movie3.add();
-            const movie4 = new Movie(movie4Title,movie4Actor,movie4Director);
-            movie4.add();
-            break;
-        default:
-            console.log ("Command not recognised");
-            break;
+            const movieName2 = input.title2;
+            const actorName2 = input.actor2;
+            const directorName2 = input.director2;
+            const movie2 = [movieName2, actorName2, directorName2];
+            console.log (movie2);
+           
+            const movieName3 = input.title3;
+            const actorName3 = input.actor3;
+            const directorName3 = input.director3;
+            const movie3 = [movieName3, actorName3, directorName3];
+            console.log (movie3);
+           
+    } else {
+        console.log ("Command not recognised");
     }
 };
 
-app(process.argv);
+app(yargs.argv);
